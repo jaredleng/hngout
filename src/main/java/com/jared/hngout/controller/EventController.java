@@ -1,4 +1,5 @@
 package com.jared.hngout.controller;
+import com.jared.hngout.model.Member;
 import com.jared.hngout.service.EventService;
 import com.jared.hngout.model.Event;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +46,14 @@ public class EventController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(event);
+    }
+    @GetMapping("/{eventId}/members")
+    public ResponseEntity<List<Member>> getEventMembers(@PathVariable Long eventId) {
+        Event event = eventService.getEventById(eventId);
+        if (event == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(event.getMembers());   // <-- HERE's where getMembers() gets used
     }
     // GET   /events/{id}   -> get one       (@GetMapping("/{id}"), @PathVariable)
     // PUT   /events/{id}   -> update        (@PutMapping)
