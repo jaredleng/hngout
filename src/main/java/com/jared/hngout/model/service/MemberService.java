@@ -1,5 +1,6 @@
 package com.jared.hngout.service;
 
+import com.jared.hngout.dto.MemberDto;
 import com.jared.hngout.model.Event;
 import com.jared.hngout.model.Member;
 import com.jared.hngout.repository.EventRepository;
@@ -18,6 +19,16 @@ public class MemberService {
         this.memberRepository = memberRepository;
         this.eventRepository=eventRepository;
     }
+    private MemberDto toDto(Member member){
+        return new MemberDto(
+                member.getId(),
+                member.getName(),
+                member.getEmail(),
+                member.getContactNumber(),
+                member.getAge(),
+                member.getGender()
+        );
+    }
 
     public Member createMember(Member m){
         return memberRepository.save(m);
@@ -27,8 +38,12 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member getMemberById(Long id){
-        return memberRepository.findById(id).orElse(null);
+    public MemberDto getMemberById(Long id){
+       Member member= memberRepository.findById(id).orElse(null);
+        if(member ==null){
+            return null;
+        }
+        return toDto(member);
     }
 
     public Member updateMember(Long id, Member newData){

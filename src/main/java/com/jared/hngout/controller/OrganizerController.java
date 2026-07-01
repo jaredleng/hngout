@@ -1,6 +1,7 @@
 package com.jared.hngout.controller;
 
 
+import com.jared.hngout.dto.OrganizerDto;
 import com.jared.hngout.model.Organizer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public OrganizerController(OrganizerService organizerService){   // constructor,
 
     }
     @GetMapping("/{organizerId}")
-    public ResponseEntity<Organizer> getOne(@PathVariable Long organizerId){
-        Organizer organizer=organizerService.getOrganizerById(organizerId);
+    public ResponseEntity<OrganizerDto> getOne(@PathVariable Long organizerId){
+        OrganizerDto organizer=organizerService.getOrganizerById(organizerId);
         if (organizer==null){
             return ResponseEntity.notFound().build();
 

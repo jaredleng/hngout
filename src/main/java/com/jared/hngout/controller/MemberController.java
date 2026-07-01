@@ -1,5 +1,6 @@
 package com.jared.hngout.controller;
 
+import com.jared.hngout.dto.MemberDto;
 import com.jared.hngout.model.Member;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class MemberController {
     }
 
     @GetMapping("/{memberId}")
-    public ResponseEntity<Member> getId(@PathVariable Long memberId) {
-        Member member = memberService.getMemberById(memberId);
+    public ResponseEntity<MemberDto> getId(@PathVariable Long memberId) {
+        MemberDto member = memberService.getMemberById(memberId);
         if (member == null) {
             return ResponseEntity.notFound().build();
         }

@@ -1,5 +1,6 @@
 package com.jared.hngout.service;
 
+import com.jared.hngout.dto.OrganizerDto;
 import com.jared.hngout.model.Organizer;
 import com.jared.hngout.repository.OrganizerRepository;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,26 @@ public class OrganizerService {
     public OrganizerService(OrganizerRepository organizerRepository){
         this.organizerRepository = organizerRepository;
     }
+    private OrganizerDto toDto(Organizer organizer){
+        return new OrganizerDto(
+                organizer.getId(),
+                organizer.getName(),
+                organizer.getEmail(),
+                organizer.getContactNumber(),
+                organizer.getCompanyRegNumber()
+
+
+        );
+    }
+
+    public OrganizerDto getOrganizerById(Long id){
+        Organizer organizer=organizerRepository.findById(id).orElse(null);
+        if (organizer==null){
+            return null;
+        }
+        return toDto(organizer);
+
+    }
 
     public Organizer createOrganizer(Organizer organizer){
         return organizerRepository.save(organizer);
@@ -23,9 +44,7 @@ public class OrganizerService {
         return organizerRepository.findAll();
     }
 
-    public Organizer getOrganizerById(Long id){
-        return organizerRepository.findById(id).orElse(null);
-    }
+
 
     public Organizer updateOrganizer(Long id, Organizer newData){
         Organizer organizer = organizerRepository.findById(id).orElse(null);
