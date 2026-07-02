@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+import static java.util.Arrays.stream;
+
 @Service
 public class MemberService {
 
@@ -34,8 +37,12 @@ public class MemberService {
         return memberRepository.save(m);
     }
 
-    public List<Member> getAllMembers(){
-        return memberRepository.findAll();
+    public List<MemberDto> getAllMembers(){
+        return memberRepository.findAll()
+                .stream()
+                .map(this::toDto)
+                .toList();
+
     }
 
     public MemberDto getMemberById(Long id){

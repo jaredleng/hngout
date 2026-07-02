@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static java.util.Arrays.stream;
+
 @Service
 public class OrganizerService {
 
@@ -40,8 +42,12 @@ public class OrganizerService {
         return organizerRepository.save(organizer);
     }
 
-    public List<Organizer> getAllOrganizer(){
-        return organizerRepository.findAll();
+    public List<OrganizerDto> getAllOrganizer(){
+        return organizerRepository.findAll()
+                .stream()
+                .map(this::toDto)
+                .toList();
+
     }
 
 

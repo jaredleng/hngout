@@ -26,7 +26,7 @@ public OrganizerController(OrganizerService organizerService){   // constructor,
          return ResponseEntity.status(201).body(created);
     }
     @GetMapping
-    public ResponseEntity <List<Organizer>> getAllOrganizer(){
+    public ResponseEntity <List<OrganizerDto>> getAllOrganizer(){
         return ResponseEntity.ok(organizerService.getAllOrganizer());
 
     }
