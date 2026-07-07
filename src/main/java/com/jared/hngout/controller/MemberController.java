@@ -2,6 +2,7 @@ package com.jared.hngout.controller;
 
 import com.jared.hngout.dto.MemberDto;
 import com.jared.hngout.model.Member;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.jared.hngout.service.MemberService;
@@ -18,7 +19,7 @@ public class MemberController {
     }
 
     @PostMapping
-    public ResponseEntity<Member> createMember(@RequestBody Member member) {
+    public ResponseEntity<Member> createMember(@Valid @RequestBody Member member) {
         Member created = memberService.createMember(member);
         return ResponseEntity.status(201).body(created);
     }

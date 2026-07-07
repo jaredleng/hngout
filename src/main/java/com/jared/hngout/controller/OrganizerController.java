@@ -3,6 +3,7 @@ package com.jared.hngout.controller;
 
 import com.jared.hngout.dto.OrganizerDto;
 import com.jared.hngout.model.Organizer;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.jared.hngout.service.OrganizerService;
@@ -18,7 +19,7 @@ public OrganizerController(OrganizerService organizerService){   // constructor,
     this.organizerService = organizerService;
 }
     @PostMapping
-    public ResponseEntity<Organizer> createOrganizer(@RequestBody Organizer organizer){
+    public ResponseEntity<Organizer> createOrganizer(@Valid @RequestBody Organizer organizer){
         Organizer created= organizerService.createOrganizer(organizer);
         if(created==null){
             return ResponseEntity.notFound().build();

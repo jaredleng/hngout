@@ -6,14 +6,16 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
-
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Member extends User {
-
+    @Min(value = 1, message = "Age must be at least 1")
     private int age;
+    @NotBlank(message="Gender is required")
     private String gender;
 
     @ManyToMany
