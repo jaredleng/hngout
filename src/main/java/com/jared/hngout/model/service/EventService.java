@@ -1,5 +1,5 @@
 package com.jared.hngout.service;
-
+import com.jared.hngout.dto.EventDto;
 import com.jared.hngout.model.Event;
 import com.jared.hngout.model.Organizer;
 import com.jared.hngout.repository.EventRepository;
@@ -26,10 +26,11 @@ public class EventService {
         event.setOrganizer(organizer);
         return eventRepository.save(event);// one line: call the repository's save method
     }
-    public List <Event>getAllEvents() {
-
-        return eventRepository.findAll();  // one line: call the repository's findAll method
-
+    public List<EventDto> getAllEvents() {
+        return eventRepository.findAll()
+                .stream()
+                .map(this::toDto)
+                .toList();
     }
     public Event getEventById(Long id) {
         // findById returns an Optional<User>, not a User directly.
@@ -59,6 +60,19 @@ public class EventService {
 
         }
         return true;
+    }
+    private EventDto toDto(Event event) {
+        return new EventDto(
+                event.getId(),
+                event.getEventName(),
+                event.getCategory(),
+                event.getDateTime(),
+                event.getLocation(),
+                event.getMaxMembers(),
+                event.getOrganizer().getId(),
+                event.getOrganizer().getName(),
+                event.getMembers().size()
+        );
     }
 
 

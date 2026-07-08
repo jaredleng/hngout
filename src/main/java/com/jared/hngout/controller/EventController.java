@@ -1,4 +1,5 @@
 package com.jared.hngout.controller;
+import com.jared.hngout.dto.EventDto;
 import com.jared.hngout.model.Member;
 import com.jared.hngout.service.EventService;
 import com.jared.hngout.model.Event;
@@ -32,7 +33,7 @@ public class EventController {
 
     // POST  /events        -> create        (@PostMapping, @RequestBody Event)
     @GetMapping
-    public ResponseEntity <List<Event>>getAll(){
+    public ResponseEntity <List<EventDto>>getAll(){
         return ResponseEntity.ok(eventService.getAllEvents());
     }
 

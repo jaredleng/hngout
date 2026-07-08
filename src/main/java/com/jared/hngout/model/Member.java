@@ -1,5 +1,5 @@
 package com.jared.hngout.model;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +18,7 @@ public class Member extends User {
     @NotBlank(message="Gender is required")
     private String gender;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "member_events",
