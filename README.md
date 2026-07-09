@@ -66,4 +66,4 @@ http://localhost:8080
 
 This endpoint returns member data without exposing the password field.
 
-![DTO no password](docs/images/dto-no-password.png)
+![DTO no password](dto-no-password.png)
