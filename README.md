@@ -61,3 +61,9 @@ mvn spring-boot:run
 ```text
 http://localhost:8080
 ```
+## API Screenshots
+### DTO response hides password
+
+This endpoint returns member data without exposing the password field.
+
+![DTO no password](downloads/dto-no-password.png)
