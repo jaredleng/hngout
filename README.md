@@ -67,3 +67,13 @@ http://localhost:8080
 This endpoint returns member data without exposing the password field.
 
 ![DTO no password](dto-no-password.png)
+### Validation rejects invalid input
+![Validation error](validation-error.png)
+
+### Clean event response using EventDto
+![Event DTO response](event-dto-response.png)
+
+### Review rejected if member did not join event
+![Review reject](review-reject.png)
+### Member able to join event
+![member join event ](join-event.png)
