@@ -77,3 +77,4 @@ This endpoint returns member data without exposing the password field.
 ![Review reject](review-reject.png)
 ### Member able to join event
 ![member join event ](join-event.png)
+![member join event MySQL Workbench ](join-event(1).png)
