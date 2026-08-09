@@ -33,8 +33,7 @@ public class EventService {
                 .toList();
     }
     public Event getEventById(Long id) {
-        // findById returns an Optional<User>, not a User directly.
-        // For now, use .orElse(null) to unwrap it.
+
         return eventRepository.findById(id).orElse(null);  // i.e. userRepository.findById(id).orElse(null)
     }
     public Event updateEvent(Long id, Event newData) {
